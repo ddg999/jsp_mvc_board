@@ -14,12 +14,13 @@ public class UserRepositoryImpl implements UserRepository {
 
 	private static final String INSERT_USER_SQL = " INSERT INTO users(username, password, email) VALUES (?, ?, ?) ";
 	private static final String DELETE_USER_SQL = " DELETE FROM users WHERE id = ? ";
-	private static final String SELECT_USER_BY_USERNAME = " SELECT * FROM uesrs WHERE username = ? ";
-	private static final String SELECT_USER_BY_USERNAME_AND_PASSWORD = " SELECT * FROM uesrs WHERE username = ? AND password = ? ";
+	private static final String SELECT_USER_BY_USERNAME = " SELECT * FROM users WHERE username = ? ";
+	private static final String SELECT_USER_BY_USERNAME_AND_PASSWORD = " SELECT * FROM users WHERE username = ? AND password = ? ";
 	private static final String SELECT_ALL_USERS = " SELECT * FROM users ";
 
 	@Override
-	public void addUser(User user) {
+	public int addUser(User user) {
+		int rowCount = 0;
 		try (Connection conn = DBUtil.getConnection()) {
 			conn.setAutoCommit(false);
 			// username 중복 확인 필요
@@ -28,7 +29,7 @@ public class UserRepositoryImpl implements UserRepository {
 				pstmt.setString(1, user.getUsername());
 				pstmt.setString(2, user.getPassword());
 				pstmt.setString(3, user.getEmail());
-				pstmt.executeUpdate();
+				rowCount = pstmt.executeUpdate();
 				conn.commit();
 			} catch (Exception e) {
 				conn.rollback();
@@ -37,6 +38,7 @@ public class UserRepositoryImpl implements UserRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return rowCount;
 	}
 
 	@Override

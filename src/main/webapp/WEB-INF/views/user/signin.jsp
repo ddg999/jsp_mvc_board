@@ -5,14 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>로그인</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/signup.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/signin.css">
 </head>
 <body>
 	<div class="container">
-		<h2>회원가입</h2>
-		<form action="${pageContext.request.contextPath}/user/signup" method="post">
+		<h2>로그인</h2>
+		<c:if test="${not empty errorMessage}">
+			<p style="color: red;">${errorMessage}</p>		
+		</c:if>
+		<form action="${pageContext.request.contextPath}/user/signin" method="post">
 			<div class="form-group">
 				<label for="username">Username : </label>
 				<input type="text" id="username" name="username" value="홍길동" required>
@@ -22,11 +25,7 @@
 				<input type="password" id="password" name="password" value="1q2w3e" required>
 			</div>
 			<div class="form-group">
-				<label for="username">Email : </label>
-				<input type="email" id="email" name="email" value="abc@naver.com" required>
-			</div>
-			<div class="form-group">
-				<input class="btn btn-primary" type="submit" value="회원가입">
+				<input class="btn btn-primary" type="submit" value="로그인">
 			</div>
 		</form>
 	</div>
