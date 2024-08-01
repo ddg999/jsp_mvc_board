@@ -1,1 +1,59 @@
 @charset "UTF-8";
+
+.container {
+	width: 300px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headline styling */
+h2 {
+	text-align: center;
+	color: #333;
+}
+
+/* Form styling */
+.form-group {
+	margin-bottom: 15px;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+	color: #666;
+}
+
+input[type="text"], input[type="password"] {
+	width: calc(100% - 20px);
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 14px;
+}
+
+/* Submit button styling */
+.btn {
+	width: 100%;
+	padding: 10px;
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.btn:hover {
+	background-color: #45a049;
+}
+
+/* Error message styling */
+p.error-message {
+	color: red;
+	text-align: center;
+	margin-top: 10px;
+}
